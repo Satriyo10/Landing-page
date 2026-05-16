@@ -1,0 +1,67 @@
+/* Konfigurasi Variable Global Warna Cyberpunk & Security */
+:root {
+    --cyber-dark: #0B0F19;
+    --cyber-card: #131A2C;
+    --cyber-primary: #3B82F6;
+    --cyber-accent: #10B981;
+}
+
+/* Utilities Class Tambahan untuk mendukung Tailwind */
+.bg-cyberDark {
+    background-color: var(--cyber-dark);
+}
+
+.bg-cyberCard {
+    background-color: var(--cyber-card);
+}
+
+.text-cyberPrimary {
+    color: var(--cyber-primary);
+}
+
+.bg-cyberPrimary\/20 {
+    background-color: rgba(59, 130, 246, 0.2);
+}
+
+.border-cyberPrimary\/40 {
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.bg-cyberPrimary {
+    background-color: var(--cyber-primary);
+}
+
+.text-cyberAccent {
+    color: var(--cyber-accent);
+}
+
+.bg-cyberAccent\/10 {
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.border-cyberAccent\/30 {
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.bg-cyberGlow {
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Efek Animasi Tambahan saat baris log baru masuk */
+@keyframes flashRow {
+    0% { background-color: rgba(16, 185, 129, 0.3); }
+    100% { background-color: transparent; }
+}
+
+@keyframes flashAttackRow {
+    0% { background-color: rgba(239, 68, 68, 0.4); }
+    100% { background-color: rgba(239, 68, 68, 0.05); }
+}
+
+.animate-new-log {
+    animation: flashRow 1.5s ease-out forwards;
+}
+
+.animate-attack-log {
+    animation: flashAttackRow 2.5s ease-out forwards;
+}
