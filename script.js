@@ -5,12 +5,13 @@ const KECAMATAN_MALANG = ['Klojen', 'Lowokwaru', 'Blimbing', 'Sukun', 'Kedungkan
 const logTableBody = document.getElementById('logTableBody');
 const logCounterEl = document.getElementById('logCounter');
 const attackCounterEl = document.getElementById('attackCounter');
+const latencyValEl = document.getElementById('latencyVal');
 
 // Inisialisasi Data Counter Awal
 let totalLogs = 1249802;
 let totalAttacks = 3;
 
-// Helper untuk format angka ribuan (e.g. 1,000,000)
+// Helper untuk format angka ribuan (e.g. 1,249,802)
 function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -28,7 +29,11 @@ function generateLiveLog() {
     totalLogs += Math.floor(Math.random() * 4) + 1;
     logCounterEl.textContent = formatNumber(totalLogs);
 
-    // 2. Probabilitas Kejadian Serangan MITM (Misal: 15% kemungkinan terjadi serangan baru)
+    // 2. Simulasi Fluktuasi Latency Jaringan (e.g. 11ms - 28ms)
+    const randomLatency = Math.floor(Math.random() * 17) + 11;
+    latencyValEl.textContent = `${randomLatency}ms`;
+
+    // 3. Probabilitas Kejadian Serangan MITM (15% kemungkinan terjadi interupsi)
     const isAttack = Math.random() < 0.15;
     const randomKecamatan = KECAMATAN_MALANG[Math.floor(Math.random() * KECAMATAN_MALANG.length)];
     const timestamp = getCurrentTimestamp();
@@ -36,12 +41,11 @@ function generateLiveLog() {
     let newRowHtml = '';
 
     if (isAttack) {
-        // Jika status terdeteksi serangan MITM (Mismatch Token Hash Log)
         totalAttacks += 1;
         attackCounterEl.textContent = totalAttacks;
 
-        // Simulasi IP Hacker acak
-        const randomIP = `182.253.${Math.floor(Math.random() * 254) + 1}.${Math.floor(Math.random() * 254) + 1}`;
+        // Buat Dummy IP lokal Jawa Timur / Malang secara acak
+        const randomIP = `182.253.${Math.floor(Math.random() * 120) + 10}.${Math.floor(Math.random() * 254) + 1}`;
 
         newRowHtml = `
             <tr class="animate-attack-log bg-red-500/5">
@@ -52,12 +56,11 @@ function generateLiveLog() {
             </tr>
         `;
     } else {
-        // Jika status normal (Log Sinkron/Matched)
         newRowHtml = `
             <tr class="animate-new-log">
                 <td class="py-2.5">${timestamp}</td>
                 <td>${randomKecamatan}</td>
-                <td><span class="text-cyberAccent font-bold">MATCHED</span></td>
+                <td><span class="text-cyberAccent font-medium">MATCHED</span></td>
                 <td class="text-right text-gray-500">No Anomaly</td>
             </tr>
         `;
@@ -66,16 +69,17 @@ function generateLiveLog() {
     // Masukkan baris baru di paling atas tabel feed dashboard
     logTableBody.insertAdjacentHTML('afterbegin', newRowHtml);
 
-    // Batasi jumlah baris dalam tabel biar tidak terlalu panjang ke bawah (maksimal 8 baris)
-    if (logTableBody.children.length > 8) {
+    // Batasi tumpukan baris DOM agar tidak membebani memori browser (Maks 20 baris di memori)
+    // Walaupun dibatasi 20 baris, tampilan visual luar tetap aman & rapi karena dibatasi CSS max-height scrollbar
+    if (logTableBody.children.length > 20) {
         logTableBody.removeChild(logTableBody.lastChild);
     }
 }
 
-// Jalankan simulasi generator log setiap 3 detik sekali
-setInterval(generateLiveLog, 3000);
+// Jalankan simulasi generator log setiap 2.5 detik sekali agar dashboard terasa hidup
+setInterval(generateLiveLog, 2500);
 
-// Jalankan sekali di awal saat halaman berhasil dimuat
+// Jalankan pengaturan awal saat DOM siap
 document.addEventListener('DOMContentLoaded', () => {
     logCounterEl.textContent = formatNumber(totalLogs);
     attackCounterEl.textContent = totalAttacks;

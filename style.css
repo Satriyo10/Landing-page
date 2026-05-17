@@ -7,61 +7,48 @@
 }
 
 /* Utilities Class Tambahan untuk mendukung Tailwind */
-.bg-cyberDark {
-    background-color: var(--cyber-dark);
+.bg-cyberDark { background-color: var(--cyber-dark); }
+.bg-cyberCard { background-color: var(--cyber-card); }
+.text-cyberPrimary { color: var(--cyber-primary); }
+.bg-cyberPrimary\/20 { background-color: rgba(59, 130, 246, 0.2); }
+.border-cyberPrimary\/40 { border-color: rgba(59, 130, 246, 0.4); }
+.bg-cyberPrimary { background-color: var(--cyber-primary); }
+.text-cyberAccent { color: var(--cyber-accent); }
+.bg-cyberAccent\/10 { background-color: rgba(16, 185, 129, 0.1); }
+.border-cyberAccent\/30 { border-color: rgba(16, 185, 129, 0.3); }
+.bg-cyberGlow { background-color: rgba(59, 130, 246, 0.1); }
+
+/* Desain Kustomisasi Scrollbar Mini untuk Tabel Monitor */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #0B0F19;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #1E293B;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--cyber-primary);
 }
 
-.bg-cyberCard {
-    background-color: var(--cyber-card);
-}
-
-.text-cyberPrimary {
-    color: var(--cyber-primary);
-}
-
-.bg-cyberPrimary\/20 {
-    background-color: rgba(59, 130, 246, 0.2);
-}
-
-.border-cyberPrimary\/40 {
-    border-color: rgba(59, 130, 246, 0.4);
-}
-
-.bg-cyberPrimary {
-    background-color: var(--cyber-primary);
-}
-
-.text-cyberAccent {
-    color: var(--cyber-accent);
-}
-
-.bg-cyberAccent\/10 {
-    background-color: rgba(16, 185, 129, 0.1);
-}
-
-.border-cyberAccent\/30 {
-    border-color: rgba(16, 185, 129, 0.3);
-}
-
-.bg-cyberGlow {
-    background-color: rgba(59, 130, 246, 0.1);
-}
-
-/* Efek Animasi Tambahan saat baris log baru masuk */
+/* Efek Animasi Transisi Baris Baru */
 @keyframes flashRow {
-    0% { background-color: rgba(16, 185, 129, 0.3); }
+    0% { background-color: rgba(16, 185, 129, 0.25); }
     100% { background-color: transparent; }
 }
 
 @keyframes flashAttackRow {
-    0% { background-color: rgba(239, 68, 68, 0.4); }
-    100% { background-color: rgba(239, 68, 68, 0.05); }
+    0% { background-color: rgba(239, 68, 68, 0.35); }
+    100% { background-color: rgba(239, 68, 68, 0.04); }
 }
 
 .animate-new-log {
-    animation: flashRow 1.5s ease-out forwards;
+    animation: flashRow 1.2s ease-out forwards;
 }
 
 .animate-attack-log {
-    animation: flashAttackRow 2.5s ease-out forwards;
+    animation: flashAttackRow 2s ease-out forwards;
 }
