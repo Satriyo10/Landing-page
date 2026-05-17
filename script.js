@@ -69,9 +69,11 @@ function generateLiveLog() {
     // Masukkan baris baru di paling atas tabel feed dashboard
     logTableBody.insertAdjacentHTML('afterbegin', newRowHtml);
 
-    // Batasi tumpukan baris DOM agar tidak membebani memori browser (Maks 20 baris di memori)
-    // Walaupun dibatasi 20 baris, tampilan visual luar tetap aman & rapi karena dibatasi CSS max-height scrollbar
+    // ==========================================
+    // BATASAN MAKSIMAL 20 LIST LOG (STRICT)
+    // ==========================================
     if (logTableBody.children.length > 20) {
+        // Hapus baris paling bawah (waktu paling awal) secara berkala
         logTableBody.removeChild(logTableBody.lastChild);
     }
 }

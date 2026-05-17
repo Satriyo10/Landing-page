@@ -40,7 +40,7 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (FIXED H1) -->
+    <!-- HERO SECTION -->
     <section id="home" class="pt-28 pb-16 md:pt-40 md:pb-28 px-4 max-w-7xl mx-auto flex flex-col items-center text-center relative overflow-hidden">
         <!-- Background Glow -->
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyberGlow blur-[120px] rounded-full pointer-events-none"></div>
@@ -49,7 +49,6 @@
             <i class="fa-solid fa-circle-dot animate-pulse mr-1.5"></i> Sistem Keamanan GIS Kota Malang
         </span>
         
-        <!-- Perbaikan Wrapper & Struktur Grid H1 -->
         <div class="max-w-5xl mx-auto px-2">
             <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none sm:leading-tight md:leading-tight text-white">
                 Implementasi Log Synchronization Melawan Serangan <span class="bg-gradient-to-r from-cyberPrimary via-blue-400 to-cyberAccent bg-clip-text text-transparent">Man-in-the-Middle</span>
@@ -162,7 +161,7 @@
         </div>
     </section>
 
-    <!-- PERFECTED LIVE DEMO / DASHBOARD SECTION -->
+    <!-- LIVE DEMO / DASHBOARD SECTION -->
     <section id="dashboard" class="py-20 border-t border-gray-900 bg-gradient-to-b from-cyberDark to-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
@@ -223,7 +222,7 @@
                         </div>
                     </div>
 
-                    <!-- Right Column Table (FIXED MAX HEIGHT WITH CONTAINER LIMIT) -->
+                    <!-- Right Column Table (Fixed Visual Viewport with Internals Scroll) -->
                     <div class="lg:col-span-2 bg-cyberDark p-4 rounded-xl border border-gray-800 flex flex-col h-full justify-between shadow-inner">
                         <div class="flex items-center justify-between mb-4 border-b border-gray-800/60 pb-2">
                             <span class="text-xs md:text-sm font-bold text-gray-200 flex items-center">
@@ -232,7 +231,7 @@
                             <span class="text-[10px] bg-gray-800 text-gray-400 font-mono px-2 py-0.5 rounded animate-pulse">STREAMING</span>
                         </div>
                         
-                        <!-- LIMITER CONTAINER: Memberikan batasan maksimal display data tabel -->
+                        <!-- LIMITER VISUAL VIEWPORT -->
                         <div class="overflow-y-auto max-h-[225px] custom-scrollbar pr-1 w-full">
                             <table class="w-full text-left text-xs font-mono table-auto min-w-[500px]">
                                 <thead class="sticky top-0 bg-cyberDark z-10 shadow-sm">
@@ -244,16 +243,10 @@
                                     </tr>
                                 </thead>
                                 <tbody id="logTableBody" class="divide-y divide-gray-900/60 text-gray-400">
-                                    <!-- Log Awal Bawaan -->
+                                    <!-- Log awal bawaan -->
                                     <tr>
                                         <td class="py-2.5">2026-05-17 19:30:45</td>
                                         <td>Klojen</td>
-                                        <td><span class="text-cyberAccent font-medium">MATCHED</span></td>
-                                        <td class="text-right text-gray-500">No Anomaly</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-2.5">2026-05-17 19:28:12</td>
-                                        <td>Sukun</td>
                                         <td><span class="text-cyberAccent font-medium">MATCHED</span></td>
                                         <td class="text-right text-gray-500">No Anomaly</td>
                                     </tr>
