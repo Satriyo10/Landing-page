@@ -85,4 +85,29 @@ setInterval(generateLiveLog, 2500);
 document.addEventListener('DOMContentLoaded', () => {
     logCounterEl.textContent = formatNumber(totalLogs);
     attackCounterEl.textContent = totalAttacks;
+
+    // ==========================================
+    // GENERATE 5 LIST LOG AWAL SAAT DI-REFRESH
+    // ==========================================
+    for (let i = 0; i < 5; i++) {
+        // Kurangi waktu mundur ke belakang (selisih 3 detik per baris) agar timestamp terlihat riil
+        const pastTime = new Date(Date.now() - (i * 3000)); 
+        const pad = (n) => n.toString().padStart(2, '0');
+        const timestamp = `${pastTime.getFullYear()}-${pad(pastTime.getMonth() + 1)}-${pad(pastTime.getDate())} ${pad(pastTime.getHours())}:${pad(pastTime.getMinutes())}:${pad(pastTime.getSeconds())}`;
+        
+        const randomKecamatan = KECAMATAN_MALANG[Math.floor(Math.random() * KECAMATAN_MALANG.length)];
+        
+        // Log awal diatur aman (MATCHED) agar saat pertama dimuat tidak mengacaukan counter
+        const initialRowHtml = `
+            <tr class="border-b border-gray-900/60 text-gray-400">
+                <td class="py-2.5">${timestamp}</td>
+                <td>${randomKecamatan}</td>
+                <td><span class="text-cyberAccent font-medium">MATCHED</span></td>
+                <td class="text-right text-gray-500">No Anomaly</td>
+            </tr>
+        `;
+        
+        // Menggunakan beforeend karena item pertama loop adalah waktu terbaru (berada paling atas)
+        logTableBody.insertAdjacentHTML('beforeend', initialRowHtml);
+    }
 });
